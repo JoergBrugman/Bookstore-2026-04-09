@@ -1,0 +1,32 @@
+{
+  "id": "77379ca1-af55-4cf3-9b90-5bb3e059c538",
+  "name": "Bookstore",
+  "publisher": "get&use Academy GmbH",
+  "version": "26.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "15.0",
+  "features": [ 
+    "NoImplicitWith"],
+  "resourceFolders": ["Demo/Resources/.resources"]
+}

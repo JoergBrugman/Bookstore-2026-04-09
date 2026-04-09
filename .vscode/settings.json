@@ -1,0 +1,18 @@
+{
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.OnSaveAlFileAction": "Rename",
+    "al.enableCodeAnalysis": true,
+    "al.codeAnalyzers": [
+        "${CodeCop}",
+        "${UICop}",
+        "${PerTenantExtensionCop}"
+    ],
+    "editor.mouseWheelZoom": true,
+    "editor.snippetSuggestions": "bottom",
+    "xliffSync.parseFromDeveloperNote": true,
+    "xliffSync.parseFromDeveloperNoteOverwrite": true,
+    "al.showHomeAtStartup": "Always"
+
+}

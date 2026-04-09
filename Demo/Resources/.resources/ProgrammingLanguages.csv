@@ -1,0 +1,12 @@
+Assembly,1949,Imperativ,Verschiedene,Maschinennah
+Fortran,1957,Imperativ,John Backus,Hochsprache
+LISP,1958,Funktional,John McCarthy,KI
+COBOL,1959,Imperativ,Grace Hopper,Wirtschaftsanwendungen
+BASIC,1964,Imperativ,John Kemeny & Thomas Kurtz,Lernsprache
+C,1972,Imperativ,Dennis Ritchie,Unix-Entwicklung
+Pascal,1970,Imperativ/Nicht-objektorientiert,Niklaus Wirth,Lernsprache
+Smalltalk,1972,Objektorientiert,Alan Kay,Objektorientierungspionier
+Prolog,1972,Deklarativ,Alain Colmerauer,KI
+C++,1983,Objektorientiert, Bjarne Stroustrup,Erweiterung von C
+Perl,1987,Skript/Multiparadigma,Larry Wall,Textverarbeitung
+Python,1991,Objektorientiert/Funktional/Imperativ,Guido van Ross
