@@ -10,6 +10,8 @@ codeunit 50100 "Subscriber Store"
     [EventSubscriber(ObjectType::Table, Database::Customer, 'OnAfterInsertEvent', '', true, true)]
     local procedure FavoriteBookHintCustOnAfterInsert(var Rec: Record Customer)
     begin
+        if Rec.IsTemporary then
+            exit;
         if Rec."Favorite Book No." = '' then
             Message(FavoriteBookHintMsg,
                Rec.FieldCaption("Favorite Book No."),
