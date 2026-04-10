@@ -20,12 +20,31 @@ page 50101 "Book List"
         {
             repeater(Books)
             {
-                field("No."; Rec."No.") { }
-                field(Description; Rec.Description) { }
-                field(ISBN; Rec.ISBN) { }
-                field(Author; Rec.Author) { }
-                field(Type; Rec."Type") { }
-                field("No. of Pages"; Rec."No. of Pages") { Visible = false; }
+                field("No."; Rec."No.")
+                {
+                    ToolTip = 'Specifies the value of the No. field.', Comment = 'de-DE=Nr.';
+                }
+                field(Description; Rec.Description)
+                {
+                    ToolTip = 'Specifies the value of the Description field.';
+                }
+                field(ISBN; Rec.ISBN)
+                {
+                    ToolTip = 'Specifies the value of the ISBN field.';
+                }
+                field(Author; Rec.Author)
+                {
+                    ToolTip = 'Specifies the value of the Author field.';
+                }
+                field(Type; Rec."Type")
+                {
+                    ToolTip = 'Specifies the value of the Type field.';
+                }
+                field("No. of Pages"; Rec."No. of Pages")
+                {
+                    Visible = false;
+                    ToolTip = 'Specifies the value of the No. of Pages field.';
+                }
             }
         }
         area(FactBoxes)
@@ -62,6 +81,52 @@ page 50101 "Book List"
                     BookTypeSimpleImpl.StartDeliverBook();
                 end;
             }
+            action(SalesProcessWithInterface)
+            {
+                Caption = 'Sales Process with Interface';
+                Image = Process;
+                ToolTip = 'Executes the Sales Process with Interface action.';
+
+                trigger OnAction()
+                var
+                    BookTypeNoneImpl: Codeunit "Book Type None Impl.";
+                    BookTypeHardcoverImpl: Codeunit "Book Type Hardcover Impl.";
+                    BookTypePaperbackImpl: Codeunit "Book Type Paperback Impl.";
+                    BookTypeProcess: Interface "Book Type Process";
+                    IsHandled: Boolean;
+                begin
+                    OnBeforeHandleBookType(Rec, IsHandled);
+                    if IsHandled then
+                        exit;
+
+                    case Rec.Type of
+                        "Book Type"::" ":
+                            BookTypeProcess := BookTypeNoneImpl;
+                        "Book Type"::Hardcover:
+                            BookTypeProcess := BookTypeHardcoverImpl;
+                        "Book Type"::Paperback:
+                            BookTypeProcess := BookTypePaperbackImpl;
+                    end;
+                    BookTypeProcess.StartDeployBook();
+                    BookTypeProcess.StartDeliverBook();
+                end;
+            }
+            action(SalesProcessWithInterfaceAndEnum)
+            {
+                Caption = 'Sales Process with Interface and Enum';
+                Image = Process;
+                ToolTip = 'Executes the Sales Process with Interface and Enum action.';
+                trigger OnAction()
+                var
+                    BookTypeProcess: Interface "Book Type Process";
+                begin
+                    BookTypeProcess := Rec.Type;
+                    BookTypeProcess.StartDeployBook();
+                    if BookTypeProcess is "Book Type Process V2" then
+                        (BookTypeProcess as "Book Type Process V2").CheckQuality();
+                    BookTypeProcess.StartDeliverBook();
+                end;
+            }
         }
         area(Reporting)
         {
@@ -75,4 +140,9 @@ page 50101 "Book List"
         }
     }
 
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeHandleBookType(Rec: Record Book; var IsHandled: Boolean)
+    begin
+    end;
 }
